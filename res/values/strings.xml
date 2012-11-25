@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">Android23</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="configure">Configuracion</string>
+    <string name="save">save</string>
+    <string name="readXml">Read Xml</string>
+    <string name="mapa">mapa</string>
+    <string name="search">Buscar</string>
+
+</resources>
