@@ -61,8 +61,7 @@ jobs:
     - if: matrix.language == 'java'
       name: Build Java
       run: |
-       javac -cp ./lib/servlet-api.jar:./lib/commons-lang2.5.jar:./lib/commons-codec-1.5.jar:./lib/javamail-1.4.4.jar ./src/**/*.java
-
+       javac -cp ./lib/servlet-api.jar:./lib/commons-lang2.5.jar:./lib/commons-codec-1.5.jar:./lib/javamail-1.4.4.jar ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServeletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
 
