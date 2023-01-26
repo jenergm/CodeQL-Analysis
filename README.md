@@ -1,7 +1,7 @@
 Android23
 =========
 
-App de Android
+App de Androidq
 
 
 http://wiki.eclipse.org/EGit/User_Guide
