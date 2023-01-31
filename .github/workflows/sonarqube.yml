@@ -65,7 +65,7 @@ jobs:
             # Unique key of your project. You can find it in SonarQube > [my project] > Project Information (top-right menu)
             # mandatory
             -Dsonar.projectKey=codeQL 
-            -Dsonar.sources=./src/testcases/CWE111_Unsafe_JNI,./src/testcasesupport
+            -Dsonar.sources=./src/testcases/CWE114_Process_Control,./src/testcasesupport
             -Dsonar.language=java
             -Dsonar.exclusions=**/*.so,src/testcases/CWE111_Unsafe_JNI/visual.studio.jni.dll.project/**,**/*.dll,**/*.xml,src/testcases/CWE111_Unsafe_JNI/linux.jni.files/**
             -Dsonar.java.binaries=.
