@@ -46,7 +46,11 @@ jobs:
         with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
          fetch-depth: 0
-    
+         
+      - name: Build Java
+        run: |
+         javac -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE111_Unsafe_JNI/*.java
+         
       - name: Analyze with SonarQube
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarqube-scan-action@v1.1.0
