@@ -8,13 +8,13 @@
 name: Veracode Static Analysis Pipeline Scan
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
+  #push:
+  #  branches: [ "master" ]
+  #pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "master" ]
-  schedule:
-    - cron: '43 4 * * 1'
+  #  branches: [ "master" ]
+  #schedule:
+  #  - cron: '43 4 * * 1'
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -44,7 +44,7 @@ jobs:
 
     - name: Build Java
       run: |
-       javac -verbose -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE111_Unsafe_JNI/*.java
+       javac -verbose -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE89_SQL_Injection/*.java
 
     - name: Veracode Upload And Scan
       uses: veracode/veracode-uploadandscan-action@0.2.1
@@ -54,7 +54,7 @@ jobs:
         sandboxname: '${{ secrets.VERACODE_SANDBOX_NAME }}'
         version: '${{ github.ref_name }}-${{ github.run_id }}'
         createprofile: false
-        filepath: './src/testcases/CWE111_Unsafe_JNI/*.class'
+        filepath: './src/testcases/CWE89_SQL_Injection/*.class'
         vid: '${{ secrets.VERACODE_API_ID }}'
         vkey: '${{ secrets.VERACODE_API_KEY }}'
 #          createsandbox: 'true'
