@@ -69,7 +69,7 @@ jobs:
             -Dsonar.language=java
             -Dsonar.exclusions=**/*.so
             -Dsonar.java.binaries=./lib
-            -Dsonar.ce.javaOpts=--Xmx512m --Xms256m --XX:+HeapDumpOnOutOfMemoryError
+            -Dsonar.ce.javaOpts='-Xmx512m -Xms256m -XX:+HeapDumpOnOutOfMemoryError'
             # Comma-separated paths to directories containing main source files.            
             # When you need the analysis to take place in a directory other than the one from which it was launched
             #-Dsonar.projectBaseDir= # optional, default is .
