@@ -44,7 +44,7 @@ jobs:
 
     - name: Build Java
       run: |
-       javac -verbose -g -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE114_Process_Control/*.java
+       javac -verbose -g -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE89_SQL_Injection/*.java
 
     - name: Run Veracode SCA
       env:
