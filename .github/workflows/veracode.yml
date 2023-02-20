@@ -56,7 +56,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         create-issues: true
-        path: ./src/testcases/CWE114_Process_Control
+        path: ./src/testcases/CWE89_SQL_Injection
         recursive: true
 
 #    - name: Veracode Upload And Scan
@@ -67,7 +67,7 @@ jobs:
 #        sandboxname: '${{ secrets.VERACODE_SANDBOX_NAME }}'
 #        version: '${{ github.ref_name }}-${{ github.run_id }}'
 #        createprofile: false
-#        filepath: './src/testcases/CWE114_Process_Control/*.class'
+#        filepath: './src/testcases/CWE89_SQL_Injection/*.class'
 #        vid: '${{ secrets.VERACODE_API_ID }}'
 #        vkey: '${{ secrets.VERACODE_API_KEY }}'
 ##          createsandbox: 'true'
