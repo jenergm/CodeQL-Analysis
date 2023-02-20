@@ -46,19 +46,32 @@ jobs:
       run: |
        javac -verbose -g -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE114_Process_Control/*.java
 
-    - name: Veracode Upload And Scan
-      uses: veracode/veracode-uploadandscan-action@0.2.4
+    - name: Run Veracode SCA
+      env:
+        SRCCLR_API_TOKEN: ${{ secrets.VERACODE_SCA_TOKEN_CASH }}
+        SRCCLR_USE_DOTNET_EXEC: NUGET
+        SRCCLR_SKIP_DOTNET_RESTORE: true
+      #run: curl -sSL https://download.sourceclear.com/ci.sh | sh
+      uses: veracode/veracode-sca@v2.0.65
       with:
-        # For more info visit: https://github.com/marketplace/actions/veracode-upload-and-scan
-        appname: '${{ secrets.VERACODE_APP_NAME }}'
-        sandboxname: '${{ secrets.VERACODE_SANDBOX_NAME }}'
-        version: '${{ github.ref_name }}-${{ github.run_id }}'
-        createprofile: false
-        filepath: './src/testcases/CWE114_Process_Control/*.class'
-        vid: '${{ secrets.VERACODE_API_ID }}'
-        vkey: '${{ secrets.VERACODE_API_KEY }}'
-#          createsandbox: 'true'
-#          scantimeout: 0
-#          exclude: '*.js'
-#          include: '*.jar'
-#          criticality: 'VeryHigh'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        create-issues: true
+        path: ./src/testcases/CWE114_Process_Control
+        recursive: true
+
+#    - name: Veracode Upload And Scan
+#      uses: veracode/veracode-uploadandscan-action@0.2.4
+#      with:
+#        # For more info visit: https://github.com/marketplace/actions/veracode-upload-and-scan
+#        appname: '${{ secrets.VERACODE_APP_NAME }}'
+#        sandboxname: '${{ secrets.VERACODE_SANDBOX_NAME }}'
+#        version: '${{ github.ref_name }}-${{ github.run_id }}'
+#        createprofile: false
+#        filepath: './src/testcases/CWE114_Process_Control/*.class'
+#        vid: '${{ secrets.VERACODE_API_ID }}'
+#        vkey: '${{ secrets.VERACODE_API_KEY }}'
+##          createsandbox: 'true'
+##          scantimeout: 0
+##          exclude: '*.js'
+##          include: '*.jar'
+##          criticality: 'VeryHigh'
