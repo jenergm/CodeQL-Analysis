@@ -55,7 +55,8 @@ jobs:
       uses: veracode/veracode-sca@v2.0.65
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        create-issues: true
+        create-issues: false
+        debug: true
         path: ./src/testcases/CWE89_SQL_Injection
         recursive: true
 
