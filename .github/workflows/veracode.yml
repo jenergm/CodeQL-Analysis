@@ -55,8 +55,8 @@ jobs:
       #run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan ./src/testcases/CWE89_SQL_Injection --recursive --debug
       uses: veracode/veracode-sca@v2.0.65
       with:
-        # github_token: ${{ secrets.GITHUB_TOKEN }}
-        github_token: ${{ github.token }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        #github_token: ${{ github.token }}
         create-issues: true
         debug: true
         path: ./src/testcases/CWE89_SQL_Injection
