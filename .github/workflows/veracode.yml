@@ -20,6 +20,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 permissions:
   contents: read
+  issues: write 
+  pull-requests: write
 
 jobs:
   # This workflow contains a job to build and submit pipeline scan, you will need to customize the build process accordingly and make sure the artifact you build is used as the file input to the pipeline scan file parameter
@@ -50,15 +52,15 @@ jobs:
       env:
         SRCCLR_API_TOKEN: ${{ secrets.VERACODE_API_TOKEN  }}
       #run: curl -sSL https://download.sourceclear.com/ci.sh | sh
-      run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan ./src/testcases/CWE89_SQL_Injection --recursive --debug
-#      uses: veracode/veracode-sca@v2.0.65
-#      with:
-#        # github_token: ${{ secrets.GITHUB_TOKEN }}
-#        github_token: ${{ github.token }}
-#        create-issues: true
-#        debug: true
-#        path: ./src/testcases/CWE89_SQL_Injection
-#        recursive: true
+      #run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan ./src/testcases/CWE89_SQL_Injection --recursive --debug
+      uses: veracode/veracode-sca@v2.0.65
+      with:
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ github.token }}
+        create-issues: true
+        debug: true
+        path: ./src/testcases/CWE89_SQL_Injection
+        recursive: true
 
 #    - name: Veracode Upload And Scan
 #      uses: veracode/veracode-uploadandscan-action@0.2.4
