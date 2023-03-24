@@ -57,6 +57,8 @@ jobs:
 
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
+    # - name: Autobuild
+    #   uses: github/codeql-action/autobuild@v2
     # If this step fails, then you should remove it and run the build manually (see below)
 
     - if: matrix.language == 'java'
