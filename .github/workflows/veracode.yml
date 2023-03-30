@@ -54,8 +54,7 @@ jobs:
         sandboxname: '${{ secrets.VERACODE_SANDBOX_NAME }}'
         version: '${{ github.ref_name }}-${{ github.run_id }}'
         createprofile: false
-        filepath: './src/testcases/CWE486_Compare_Classes_by_Name/'
-        exclude: '*.java'
+        filepath: './src/testcases/CWE486_Compare_Classes_by_Name/*.class'
         vid: '${{ secrets.VERACODE_API_ID }}'
         vkey: '${{ secrets.VERACODE_API_KEY }}'
 #          createsandbox: 'true'
