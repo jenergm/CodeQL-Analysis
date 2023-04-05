@@ -12,13 +12,14 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "master" ]
-  schedule:
-    - cron: '30 14 * * 0'
+  #push:
+  #  branches: [ "master" ]
+  #pull_request:
+  # The branches below must be a subset of the branches above
+  #  branches: [ "master" ]
+  #schedule:
+  #  - cron: '30 14 * * 0'
+  workflow_dispatch:
 
 jobs:
   analyze:
@@ -56,21 +57,24 @@ jobs:
 
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
+    # - name: Autobuild
+    #   uses: github/codeql-action/autobuild@v2
     # If this step fails, then you should remove it and run the build manually (see below)
 
     - if: matrix.language == 'java'
       name: Build Java
       run: |
-       javac -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/**/*.java
+       javac -verbose -cp ".:./lib/commons-codec-1.5.jar:./lib/commons-lang-2.5.jar:./lib/javamail-1.4.4.jar:./lib/servlet-api.jar" ./src/testcasesupport/IO.java ./src/testcasesupport/AbstractTestCaseBase.java ./src/testcasesupport/AbstractTestCase.java ./src/testcasesupport/AbstractTestCaseBadOnly.java ./src/testcasesupport/AbstractTestCaseServletBase.java ./src/testcasesupport/AbstractTestCaseServlet.java ./src/testcasesupport/AbstractTestCaseServletBadOnly.java ./src/testcasesupport/AbstractTestCaseClassIssue.java ./src/testcasesupport/AbstractTestCaseClassIssueBad.java ./src/testcasesupport/AbstractTestCaseClassIssueGood.java ./src/testcases/CWE572_Call_to_Thread_run_Instead_of_start/*.java 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-
+    
     #   If the Autobuild fails above, remove it and uncomment the following three lines.
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
     # - run: |
     #     echo "Run, Build Application using script"
     #     ./location_of_script_within_repo/buildscript.sh
+    
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
